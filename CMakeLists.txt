@@ -7,7 +7,6 @@ if (NOT FIPS_IMPORT)
     include("${FIPS_ROOT_DIR}/cmake/fips.cmake")
     fips_setup()
     fips_project(fips-soloud)
-    fips_include_directories(soloud/include)
 endif()
 
 # default option values
@@ -117,6 +116,7 @@ fips_begin_module(soloud)
         fips_src(soloud/src/backend/null GROUP null)
     endif()
 fips_end_module()
+target_include_directories(soloud PUBLIC soloud/include)
 
 # configuration defines need only be visible in the implementation files
 if (SOLOUD_OPENAL) 

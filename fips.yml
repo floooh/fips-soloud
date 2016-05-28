@@ -3,7 +3,5 @@
 #
 ---
 exports:
-    header-dirs:
-        - soloud/include
     modules:
         soloud: .
