@@ -206,6 +206,10 @@ if (FIPS_CLANG)
     set(args -Wno-unused-function -Wno-unused-private-field -Wno-dangling-else -Wno-missing-braces -Wno-unused-value -Wno-parentheses -Wno-sign-compare -Wno-unused-variable -Wno-deprecated-register -Wno-writable-strings -Wno-reorder -Wno-delete-non-virtual-dtor -Wno-deprecated-register -Wno-missing-braces -Wno-unused-function -Wno-unused-variable)
 elseif (FIPS_GCC)
     set(args -Wno-unused-function -Wno-missing-braces -Wno-unused-value -Wno-parentheses -Wno-sign-compare -Wno-unused-variable -Wno-reorder -Wno-delete-non-virtual-dtor -Wno-maybe-uninitialized -Wno-unused-but-set-variable -Wno-unused-result)
+elseif (FIPS_UWP)
+    # 4146: unary minus operator applied to unsigned type, result still unsigned
+    # 4244: conversion from __int64 to int, possible loss of data
+    set(args /wd4146 /wd4244)
 endif()
 if (args)
     target_compile_options(soloud PRIVATE ${args})
